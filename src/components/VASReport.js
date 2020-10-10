@@ -12,6 +12,7 @@ class VASReport extends Component {
       startDate: "",
       endDate: "",
       messageStatus: null,
+      pageSize: 20,
     },
     result: {
       data: [],
@@ -91,6 +92,14 @@ class VASReport extends Component {
     });
   };
 
+  handleOnPageSizeChange = (e) => {
+    console.log("handleOnPageSizeChange", e.target.value);
+
+    this.setState({
+      query: { ...this.state.query, pageSize: parseInt(e.target.value) },
+    });
+  };
+
   handleOnSubmitQuery = (e) => {
     this.fetchGetReport();
     e.preventDefault();
@@ -138,8 +147,10 @@ class VASReport extends Component {
           destnAddrMap={this.state.destnAddrMap}
           totalItems={this.state.result.totalItems}
           pageIndex={this.state.result.pageIndex}
+          pageSize={this.state.query.pageSize}
           totalPages={this.state.result.totalPages}
           onPageChange={this.handleOnPageChange}
+          onPageSizeChange={this.handleOnPageSizeChange}
         />
       </React.Fragment>
     );

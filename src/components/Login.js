@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 
 class Login extends Component {
-  state = {};
+  state = { showPassword: false };
+
+  togglePassword = () => {
+    this.setState({ showPassword: !this.state.showPassword });
+  };
+
   render() {
     const {
       onSubmitLogin,
@@ -21,12 +26,14 @@ class Login extends Component {
             }}
           >
             <div className="card">
-              <div className="card-header">TOT Report - Login</div>
+              <div className="card-header">TOT VAS System Report - Login</div>
               <div className="card-body">
                 <form onSubmit={onSubmitLogin}>
                   <div className="form-row justify-content-center">
                     <div className="form-group col-md-8">
-                      <label htmlFor="inputState">Username</label>
+                      <label htmlFor="inputState">
+                        Username (Case Sensitive)
+                      </label>
                       <input
                         type="text"
                         required
@@ -41,7 +48,7 @@ class Login extends Component {
                     <div className="form-group col-md-8">
                       <label htmlFor="inputState">Password</label>
                       <input
-                        type="password"
+                        type={this.state.showPassword ? "text" : "password"}
                         required
                         className="form-control"
                         value={loggedUser.password}
@@ -49,7 +56,14 @@ class Login extends Component {
                       />
                     </div>
                   </div>
-
+                  <div className="form-row justify-content-center">
+                    <div className="form-group col-md-8">
+                      <label>
+                        <input type="checkbox" onClick={this.togglePassword} />{" "}
+                        Show Password
+                      </label>
+                    </div>
+                  </div>
                   <div className="form-row">
                     <div className="form-group col-md-12 text-center">
                       <button type="submit" className="btn btn-primary">

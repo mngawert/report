@@ -19,9 +19,22 @@ class VASReportCriteria extends Component {
       <React.Fragment>
         <div className="card">
           <div className="card-header">
-            รายงาน Log การใช้งาน {this.props.vasType}
+            <div className="row">
+              <div className="col-8">
+                รายงาน Log การใช้งาน {this.props.vasType}
+              </div>
+              <div className="col-4 text-right">
+                <a
+                  data-toggle="collapse"
+                  href="#collapse1"
+                  className="btn btn-sm"
+                >
+                  [ Show/Hide ]
+                </a>
+              </div>
+            </div>
           </div>
-          <div className="card-body">
+          <div className="card-body" id="collapse1">
             <form onSubmit={onSubmitQuery}>
               <div className="form-row justify-content-center">
                 <div className="form-group col-md-4">

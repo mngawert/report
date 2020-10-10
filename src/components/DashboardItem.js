@@ -92,7 +92,7 @@ class DashboardItem extends Component {
                   >
                     <thead>
                       <tr>
-                        <th scope="col">Destination Address</th>
+                        <th scope="col">Short Code</th>
                         <th scope="col">Total Count</th>
                       </tr>
                     </thead>

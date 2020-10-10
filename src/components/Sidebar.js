@@ -16,7 +16,7 @@ class Sidebar extends Component {
           >
             <div className="sidebar-brand-icon">
               <img
-                src="/img/crop-1574178163015.jpg"
+                src="./img/crop-1574178163015.jpg"
                 alt="TOT"
                 width="60"
                 height="60"

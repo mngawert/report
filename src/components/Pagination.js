@@ -5,9 +5,13 @@ class Pagination extends Component {
   render() {
     console.log("Pagination props", this.props);
 
-    const { totalItems, activePage, onPageChange } = this.props;
+    const { totalItems, activePage, pageSize, onPageChange } = this.props;
 
-    const { pages, currentPage, totalPages } = Paginate(totalItems, activePage);
+    const { pages, currentPage, totalPages } = Paginate(
+      totalItems,
+      activePage,
+      pageSize
+    );
 
     console.log("pages", pages);
     console.log("currentPage", currentPage);
