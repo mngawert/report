@@ -90,11 +90,11 @@ class App extends Component {
   };
 
   render() {
-    console.log(
-      "lastLoggedUser.userName",
-      localStorage.getItem("lastLoggedUser.userName")
-    );
-    console.log("lastLoginResult", localStorage.getItem("lastLoginResult"));
+    // console.log(
+    //   "lastLoggedUser.userName",
+    //   localStorage.getItem("lastLoggedUser.userName")
+    // );
+    //console.log("lastLoginResult", localStorage.getItem("lastLoginResult"));
 
     if (this.state.loginResult !== "LOGIN_OK")
       return (

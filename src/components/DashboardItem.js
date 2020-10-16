@@ -7,6 +7,8 @@ class DashboardItem extends Component {
     query: {
       vasType: this.props.vasType,
       year: new Date().getFullYear().toString(),
+      month: "",
+      messageStatus: this.props.messageStatus,
     },
 
     data: {
@@ -74,13 +76,75 @@ class DashboardItem extends Component {
     }
   };
 
+  handleOnYearChange = (e) => {
+    this.setState(
+      {
+        query: { ...this.state.query, year: e.target.value },
+      },
+      () => {
+        this.GetUSSDDashboardReport1();
+      }
+    );
+  };
+
+  handleOnMonthChange = (e) => {
+    this.setState(
+      {
+        query: { ...this.state.query, month: e.target.value },
+      },
+      () => {
+        this.GetUSSDDashboardReport1();
+      }
+    );
+  };
+
   render() {
     return (
       <React.Fragment>
         <div className="card">
-          <div className="card-header">Dashboard {this.props.vasType}</div>
+          <div className="card-header">
+            Dashboard - {this.props.vasType} {this.props.messageStatus}
+          </div>
           <div className="card-body">
             <div className="containner">
+              <div className="row mb-2">
+                <div className="col-8"></div>
+                <div className="col-4">
+                  <div className="row align-items-center">
+                    <div className="col-7">
+                      <select
+                        onChange={this.handleOnMonthChange}
+                        className="form-control"
+                      >
+                        <option value="">ทุกเดือน</option>
+                        <option value="01">มกราคม </option>
+                        <option value="02">กุมภาพันธ์ </option>
+                        <option value="03">มีนาคม </option>
+                        <option value="04">เมษายน </option>
+                        <option value="05">พฤษภาคม </option>
+                        <option value="06">มิถุนายน </option>
+                        <option value="07">กรกฎาคม </option>
+                        <option value="08">สิงหาคม </option>
+                        <option value="09">กันยายน </option>
+                        <option value="10">ตุลาคม </option>
+                        <option value="11">พฤศจิกายน </option>
+                        <option value="12">ธันวาคม </option>
+                      </select>
+                    </div>
+                    <div className="col-1">ปี</div>
+
+                    <div className="col-4">
+                      <input
+                        className="form-control"
+                        type="number"
+                        required={true}
+                        value={this.state.query.year}
+                        onChange={this.handleOnYearChange}
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div className="row">
                 <div className="col-8">
                   <Pie data={this.state.data} />

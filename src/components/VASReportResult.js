@@ -13,7 +13,7 @@ class VASReportResult extends Component {
   }
 
   render() {
-    console.log("propsQQQ:", this.props);
+    // console.log("propsQQQ:", this.props);
 
     const {
       data,
@@ -42,8 +42,8 @@ class VASReportResult extends Component {
                     <option value="10">10</option>
                     <option value="20">20</option>
                     <option value="30">30</option>
-                    <option value="40">40</option>
                     <option value="50">50</option>
+                    <option value="100">100</option>
                   </select>
                   &nbsp; รายการ
                 </label>
@@ -71,7 +71,10 @@ class VASReportResult extends Component {
                     <td>
                       {this.findAddrName(destnAddrMap, a.destinationAddress)}
                     </td>
-                    <td>{a.messageStatus === 1 ? "Success" : "Fail"}</td>
+                    <td>
+                      {a.messageStatus === 1 ? "Success" : "Fail"} [{" "}
+                      {a.internalMessageStatus} ]
+                    </td>
                   </tr>
                 ))}
               </tbody>

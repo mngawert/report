@@ -5,15 +5,29 @@ class Dashboard extends Component {
   render() {
     return (
       <React.Fragment>
-        <DashboardItem vasType="USSD" />
+        <DashboardItem vasType="USSD" messageStatus="Success" />
 
         <div className="mt-4"></div>
 
-        <DashboardItem vasType="IVR" />
+        <DashboardItem vasType="USSD" messageStatus="Fail" />
 
         <div className="mt-4"></div>
 
-        <DashboardItem vasType="MCN" />
+        <DashboardItem vasType="IVR" messageStatus="Success" />
+
+        <div className="mt-4"></div>
+
+        <DashboardItem vasType="IVR" messageStatus="Fail" />
+
+        <div className="mt-4"></div>
+
+        <DashboardItem vasType="MCN" messageStatus="Success" />
+
+        <div className="mt-4"></div>
+
+        <DashboardItem vasType="MCN" messageStatus="Fail" />
+
+        <div className="mt-4"></div>
       </React.Fragment>
     );
   }

@@ -12,6 +12,10 @@ class VASReport extends Component {
       startDate: "",
       endDate: "",
       messageStatus: null,
+      messageType:
+        this.props.vasType === "USSD" && this.props.mode === "Normal"
+          ? 1
+          : null,
       pageSize: 20,
     },
     result: {
@@ -92,12 +96,25 @@ class VASReport extends Component {
     });
   };
 
+  handleOnMessageTypeChange = (e) => {
+    console.log("handleOnMessageTypeChange", e.target.value);
+
+    this.setState({
+      query: { ...this.state.query, messageType: parseInt(e.target.value) },
+    });
+  };
+
   handleOnPageSizeChange = (e) => {
     console.log("handleOnPageSizeChange", e.target.value);
 
-    this.setState({
-      query: { ...this.state.query, pageSize: parseInt(e.target.value) },
-    });
+    this.setState(
+      {
+        query: { ...this.state.query, pageSize: parseInt(e.target.value) },
+      },
+      () => {
+        this.fetchGetReport();
+      }
+    );
   };
 
   handleOnSubmitQuery = (e) => {
@@ -134,6 +151,7 @@ class VASReport extends Component {
           onStartDateChange={this.handleOnStartDateChange}
           onEndDateChange={this.handleOnEndDateChange}
           onMessageStatusChange={this.handleOnMessageStatusChange}
+          onMessageTypeChange={this.handleOnMessageTypeChange}
           onSubmitQuery={this.handleOnSubmitQuery}
           onCancelClicked={this.handleOnCancelClicked}
           mode={this.props.mode}

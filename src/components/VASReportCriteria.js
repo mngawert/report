@@ -1,6 +1,12 @@
 import React, { Component } from "react";
 
 class VASReportCriteria extends Component {
+  state = { showCriteriaBox: false };
+
+  toggleCriteriaBox = () => {
+    this.setState({ showCriteriaBox: !this.state.showCriteriaBox });
+  };
+
   render() {
     const {
       query,
@@ -9,6 +15,7 @@ class VASReportCriteria extends Component {
       onStartDateChange,
       onEndDateChange,
       onMessageStatusChange,
+      onMessageTypeChange,
       onSubmitQuery,
       onCancelClicked,
     } = this.props;
@@ -28,13 +35,18 @@ class VASReportCriteria extends Component {
                   data-toggle="collapse"
                   href="#collapse1"
                   className="btn btn-sm"
+                  onClick={() => {
+                    this.toggleCriteriaBox();
+                  }}
                 >
-                  [ Show/Hide ]
+                  <div>
+                    {this.state.showCriteriaBox ? "[ Hide ]" : "[ Criteria ] "}
+                  </div>
                 </a>
               </div>
             </div>
           </div>
-          <div className="card-body" id="collapse1">
+          <div className="card-body collapse" id="collapse1">
             <form onSubmit={onSubmitQuery}>
               <div className="form-row justify-content-center">
                 <div className="form-group col-md-4">
@@ -110,7 +122,25 @@ class VASReportCriteria extends Component {
                     <option value="2">Fail</option>
                   </select>
                 </div>
-                <div className="form-group col-md-4"></div>
+                <div className="form-group col-md-4">
+                  {this.props.mode === "Admin" &&
+                  this.props.vasType === "USSD" ? (
+                    <React.Fragment>
+                      <label htmlFor="inputCity">Message Type</label>
+                      <select
+                        value={query.messageType || ""}
+                        onChange={onMessageTypeChange}
+                        className="form-control"
+                      >
+                        <option value="">ทั้งหมด</option>
+                        <option value="1">Dial</option>
+                        <option value="4">Detail</option>
+                      </select>
+                    </React.Fragment>
+                  ) : (
+                    ""
+                  )}
+                </div>
               </div>
               <div className="form-row">
                 <div className="form-group col-md-12 text-center">

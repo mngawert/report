@@ -3,7 +3,7 @@ import { Paginate } from "../helper/Paginate";
 
 class Pagination extends Component {
   render() {
-    console.log("Pagination props", this.props);
+    // console.log("Pagination props", this.props);
 
     const { totalItems, activePage, pageSize, onPageChange } = this.props;
 
@@ -13,9 +13,9 @@ class Pagination extends Component {
       pageSize
     );
 
-    console.log("pages", pages);
-    console.log("currentPage", currentPage);
-    console.log("totalPages", totalPages);
+    // console.log("pages", pages);
+    // console.log("currentPage", currentPage);
+    // console.log("totalPages", totalPages);
 
     if (pages.length === 0 || totalPages < 2) return null;
 
