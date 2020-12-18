@@ -58,7 +58,7 @@ class DashboardItem extends Component {
 
     try {
       let response = await DataService.GetDashboardReport1(query);
-      console.log("response", response);
+      //console.log("response", response);
 
       this.setState({
         data: {
